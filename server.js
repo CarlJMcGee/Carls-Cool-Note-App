@@ -31,10 +31,20 @@ const filterByQuery = (query, arr) => {
   return filtered;
 };
 
+const findById = (id, arr) => {
+  const result = arr.filter((note) => note.id === id)[0];
+  return result;
+};
 app.get("/note/test", (req, res) => {
   let results = notes;
   if (req.query) {
     results = filterByQuery(req.query, results);
   }
   res.json(results);
+});
+
+app.get("/note/test/:id", (req, res) => {
+  let result = findById(req.params.id, notes);
+
+  res.json(result);
 });

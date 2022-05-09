@@ -1,17 +1,15 @@
 {
   "notes": [
     {
+      "id": "001",
       "title": "Test Title",
-      "text": "Test text",
-      "favorite": true,
-      "poopy": true
+      "text": "Test text"
     },
 
     {
+      "id": "002",
       "title": "Note 1",
-      "text": "This is my note.",
-      "favorite": true,
-      "poopy": true
+      "text": "This is my note."
     }
   ]
 }
