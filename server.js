@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const { notes } = require("./db/db.json");
@@ -35,7 +36,16 @@ const findById = (id, arr) => {
   const result = arr.filter((note) => note.id === id)[0];
   return result;
 };
-app.get("/note/test", (req, res) => {
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
+});
+
+app.get("/notes", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/notes.html"));
+});
+
+app.get("/api/notes", (req, res) => {
   let results = notes;
   if (req.query) {
     results = filterByQuery(req.query, results);
@@ -43,7 +53,7 @@ app.get("/note/test", (req, res) => {
   res.json(results);
 });
 
-app.get("/note/test/:id", (req, res) => {
+app.get("/api/test/:id", (req, res) => {
   let result = findById(req.params.id, notes);
 
   res.json(result);
