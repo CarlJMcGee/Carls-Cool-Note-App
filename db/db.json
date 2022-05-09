@@ -1,6 +1,17 @@
-[
+{
+  "notes": [
     {
-        "title":"Test Title",
-        "text":"Test text"
+      "title": "Test Title",
+      "text": "Test text",
+      "favorite": true,
+      "poopy": true
+    },
+
+    {
+      "title": "Note 1",
+      "text": "This is my note.",
+      "favorite": true,
+      "poopy": true
     }
-]
+  ]
+}
