@@ -1,6 +1,8 @@
 const express = require("express");
+const path = require("path");
 const router = express.Router();
 const saveNotes = require("../util/writeFile.js");
+const deleteNote = require("../util/deleteFile.js");
 let notes = require("../db/db.json");
 
 const filterByQuery = (query, arr) => {
@@ -54,6 +56,11 @@ router.post("/notes", (req, res) => {
     saveNotes(req.body);
   }
   res.json(req.body);
+});
+
+router.delete("/notes/:id", (req, res) => {
+  console.log("Removing Note...");
+  res.send("Done", deleteNote(req.params.id));
 });
 
 module.exports = router;
