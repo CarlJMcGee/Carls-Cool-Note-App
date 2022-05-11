@@ -65,7 +65,8 @@ router.post("/notes", (req, res) => {
 
 router.delete("/notes/:id", (req, res) => {
   console.log("Removing Note...");
-  res.send(deleteNote(req.params.id));
+  deleteNote(req.params.id);
+  res.send("Done");
 });
 
 module.exports = router;
