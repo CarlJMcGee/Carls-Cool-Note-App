@@ -45,8 +45,13 @@ router.get("/notes", (req, res) => {
 
 router.get("/notes/:id", (req, res) => {
   let result = findById(req.params.id, notes);
-
-  res.json(result);
+  try {
+    if (result.id === req.params.id) {
+      res.json(result);
+    }
+  } catch (error) {
+    res.send("404 - Page Not Found");
+  }
 });
 
 router.post("/notes", (req, res) => {
@@ -60,7 +65,7 @@ router.post("/notes", (req, res) => {
 
 router.delete("/notes/:id", (req, res) => {
   console.log("Removing Note...");
-  res.send("Done", deleteNote(req.params.id));
+  res.send(deleteNote(req.params.id));
 });
 
 module.exports = router;
